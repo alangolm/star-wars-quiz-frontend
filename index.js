@@ -1,5 +1,3 @@
-// this is a test
-
 const questions = {
   question: "What year did Episode VI: Return of the Jedi release in North American theatres?",
   options: {
