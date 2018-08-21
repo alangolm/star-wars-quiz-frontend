@@ -1,3 +1,22 @@
 h1 {
   color:#ffd700
 }
+
+.banner {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  height: 200px;
+  z-index: -1;
+  background-color: black;
+}
+
+#question-box {
+background-color: lightgrey;
+width: 300px;
+border: 25px solid green;
+padding: 25px;
+margin: 25px;
+}
