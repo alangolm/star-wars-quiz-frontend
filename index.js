@@ -1,3 +1,10 @@
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+
+
+
 const questions = {
   question: "What year did Episode VI: Return of the Jedi release in North American theatres?",
   options: {
@@ -407,3 +414,5 @@ options: {
   },
 correctAnswer: "b"
 }
+
+})
