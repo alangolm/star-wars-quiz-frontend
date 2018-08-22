@@ -15,12 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let randomEl = Math.floor(Math.random() * questions.length)
 
   //invokes initial loadQuestion function
-let progressiveArray = questions
+
 
   loadQuestion()
 
   function newQuestion(){
     let newRandomEl = Math.floor(Math.random() * questions.length)
+    newRandomEl
   }
 
 
@@ -68,6 +69,7 @@ let progressiveArray = questions
     answerChoicesBox.append(answerButton)
     // not sure how this works, but it adds br tags after each button element
     answerChoicesBox.innerHTML += `<br><br>`
+    buttonCounter = 0
   }
 
 answerChoicesBox.addEventListener('click', event => {
@@ -93,6 +95,9 @@ answerChoicesBox.addEventListener('click', event => {
     event.target.style = "background-color: #f44336;"
     }
     if (livesCounter > 0) {
+      console.log("questions length", questions.length);
+      questions.splice(randomEl, 1)
+      console.log("new questions length", questions.length)
       setTimeout(loadQuestion, 1977)
     }
   }
