@@ -6,7 +6,7 @@ const questions = [
       b: "1983",
       c: "1986",
     },
-    correctAnswer: "c"
+    correctAnswer: "3"
   },
 
   {
