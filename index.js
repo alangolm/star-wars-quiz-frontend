@@ -63,32 +63,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
 answerChoicesBox.addEventListener('click', event => {
   const questionCorrectAnswer = questions[randomEl].correctAnswer
-  console.log(questionCorrectAnswer)
+  console.log("correct answer is", questionCorrectAnswer)
+  const answerButtonId = event.target.id
+  const transferredValue = switchValue(answerButtonId)
+
 
   if (event.target.dataset.actionButton === "answer-choice") {
-    if (answerButton.id === questionCorrectAnswer){
-      return console.log("smcooocoooshshhhs")
+    if (switchValue(answerButtonId) === questionCorrectAnswer){
+      console.log("this is correct", switchValue(answerButtonId));
+    } else if (switchValue(answerButtonId) !== questionCorrectAnswer){
+    console.log("wrong answer");
     }
-
   }
+
 })
 
-
-
 function switchValue(val){
-  if (val === "a"){
-    const val = 1
-    return val
+  if (val === "1"){
+    let newVal = "a"
+    return newVal
   }
-  else if (val === "b"){
-    const val = 2
-    return val
+  else if (val === "2"){
+    let newVal = "b"
+    return newVal
   }
-  else if (val === "c"){
-    const val = 3
-    return val
+  else if (val === "3"){
+    let newVal = "c"
+    return newVal
   }
 }
+
 
 
 })
