@@ -1,36 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const questionBox = document.getElementById('question-box')
-  const optionBox = document.getElementById('option-box')
-  const optionButton = document.createElement("button")
+  const questionContainer = document.getElementById('question-container')
+  const answerChoicesBox = document.getElementById('answer-choices-container')
 
-
-loadQuestion()
-  function loadQuestion(){
-    //grabs random number between 0 and length of the array
-    const randomEl = Math.floor(Math.random() * questions.length)
-
-    //sets innerHTML of questionBox div to display question
-    questionBox.innerHTML = questions[randomEl].question
-
-    //invokes load answer function
-    loadAnswerOptions(randomEl)
+  function loadQuestion() {
+    // grabs random # between 0 and length of the questions array
+    let randomEl = Math.floor(Math.random() * questions.length)
+    // console.log(randomQuestion);
+    let pTag = document.createElement('p')
+    pTag.style = "color:#feda4a"
+    // create a p tag and set its innerHTML to be a random question from the questions array
+    pTag.innerHTML = questions[randomEl].question
+    // appending the p tag whose value is now the random question to the question container div
+    questionContainer.append(pTag)
+    loadAnswers(randomEl)
   }
 
-  //
-  function loadAnswerOptions(randomEl) {
-    const questionOptions = Object.values(questions[randomEl].options)
-    optionBox.innerHTML = questionOptions.map( answer => createButton(answer))
+  loadQuestion()
+
+  function loadAnswers(randomEl) {
+    // grabs all of the answer options for each random question from the array
+    let answerChoices = Object.values(questions[randomEl].options)
+    // console.log(answerChoices);
+    // iterating over the array of answer choices and for each answer the callback function will add behavior to each element
+    answerChoices.forEach(answer => displayAnswers(answer))
   }
 
-  function createButton(answer){
-    // const optionButton = `<button type="button" name="button"> </button>`
-    optionButton.innerHTML = "button"
-    console.log(optionButton.type);
-    // optionButton.name = `${answer}`
-    optionButton.innerText = `${answer}`
-    optionBox.appendChild(optionButton)
-}
-
-
+  // this function will add behavior to each element in the answers array
+  function displayAnswers(answer) {
+    // creating a button tag for each element
+    const answerButton = document.createElement('button')
+    // setting the innerHTML of each button to be the "answer" that is passed in to the function
+    answerButton.innerHTML = `${answer}`
+    // console.log(answerButton);
+    // appending each answer button, whose innerHTML is each answer from the array, to the answer choices container
+    answerChoicesBox.append(answerButton)
+    // not sure how this works, but it adds br tags after each button element
+    answerChoicesBox.innerHTML += `<br><br>`
+  }
 
 })
