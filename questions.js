@@ -397,6 +397,62 @@ const questions = [
       c: "Jar Jar Binks, Sith Lord",
     },
     correctAnswer: "b"
-  }
+  },
+
+  {
+    question: "What species is Admiral Ackbar?",
+    options: {
+      a: "Octopeople",
+      b: "Mon Calamari",
+      c: "Squidwardian",
+    },
+    correctAnswer: "b"
+  },
+
+  {
+    question: "What is the home world to the Gungan race?",
+    options: {
+      a: "Naboo",
+      b: "Alderaan",
+      c: "Coruscant",
+    },
+    correctAnswer: "a"
+  },
+
+  {
+    question: "What is the name of the crystal inside a lightsaber?",
+    options: {
+      a: "Kylo Crystal",
+      b: "Force Crystal",
+      c: "Kyber Crystal",
+    },
+    correctAnswer: "c"
+  },
+
+  {
+    question: "What is the name of Boba Fett's ship?",
+    options: {
+      a: "Ghost",
+      b: "Ebon Hawk",
+      c: "Slave I",
+    },
+    correctAnswer: "c"
+  },
+
+  {
+    question: "What race is Boba Fett?",
+    options: {
+      a: "Mandalorian",
+      b: "Duroian",
+      c: "Dathomiri",
+    },
+    correctAnswer: "a"
+  },
+
+
+
+
+
+
 
 ]
