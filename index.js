@@ -19,14 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadQuestion()
 
-  function newQuestion(){
-    let newRandomEl = Math.floor(Math.random() * questions.length)
-    newRandomEl
-  }
+
 
 
 
   function loadQuestion() {
+    buttonCounter = 0
     questionContainer.innerHTML = " "
     answerChoicesBox.innerHTML = " "
     // create a p tag and set its innerHTML to be a random question from the questions array
@@ -69,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     answerChoicesBox.append(answerButton)
     // not sure how this works, but it adds br tags after each button element
     answerChoicesBox.innerHTML += `<br><br>`
-    buttonCounter = 0
+
   }
 
 answerChoicesBox.addEventListener('click', event => {
