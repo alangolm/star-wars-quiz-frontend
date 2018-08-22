@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
   //used for buttonId
   let buttonCounter = 0
 
+  let playerScore = 0
+
+  let livesCounter = 2
 
   // grabs random # between 0 and length of the questions array
   let randomEl = Math.floor(Math.random() * questions.length)
@@ -17,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //loads randomEl position from questions array
   function loadQuestion() {
-
+    // let randomEl = Math.floor(Math.random() * questions.length)
 
     // create a p tag and set its innerHTML to be a random question from the questions array
     let pTag = document.createElement('p')
@@ -64,34 +67,48 @@ document.addEventListener("DOMContentLoaded", () => {
 answerChoicesBox.addEventListener('click', event => {
   const questionCorrectAnswer = questions[randomEl].correctAnswer
   console.log("correct answer is", questionCorrectAnswer)
+  // this is the id for each answer button
   const answerButtonId = event.target.id
+  // this is the value of button id switched to a string of option answer letter
   const transferredValue = switchValue(answerButtonId)
 
 
   if (event.target.dataset.actionButton === "answer-choice") {
-    if (switchValue(answerButtonId) === questionCorrectAnswer){
-      console.log("this is correct", switchValue(answerButtonId));
-    } else if (switchValue(answerButtonId) !== questionCorrectAnswer){
-    console.log("wrong answer");
+    if (transferredValue === questionCorrectAnswer) {
+      // console.log("this is correct", switchValue(answerButtonId));
+      playerScore += 10
+      // console.log(playerScore);
+      event.target.style = "background-color: #4CAF50;"
+    } else if (transferredValue !== questionCorrectAnswer){
+    // console.log("wrong answer");
+    livesCounter--
+    // console.log(livesCounter);
+    event.target.style = "background-color: #f44336;"
     }
+  }
+
+  if (livesCounter > 0) {
+    loadQuestion()
+  } else {
+
   }
 
 })
 
-function switchValue(val){
-  if (val === "1"){
-    let newVal = "a"
-    return newVal
+  function switchValue(val) {
+    if (val === "1"){
+      let newVal = "a"
+      return newVal
+    }
+    else if (val === "2"){
+      let newVal = "b"
+      return newVal
+    }
+    else if (val === "3"){
+      let newVal = "c"
+      return newVal
+    }
   }
-  else if (val === "2"){
-    let newVal = "b"
-    return newVal
-  }
-  else if (val === "3"){
-    let newVal = "c"
-    return newVal
-  }
-}
 
 
 
