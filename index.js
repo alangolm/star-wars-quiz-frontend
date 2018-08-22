@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function loadQuestion() {
     buttonCounter = 0
-    console.log(randomEl);
+    console.log("random element to grab is :", randomEl);
     questionContainer.innerHTML = " "
     answerChoicesBox.innerHTML = " "
     // create a p tag and set its innerHTML to be a random question from the questions array
@@ -36,10 +36,12 @@ document.addEventListener("DOMContentLoaded", () => {
       pTag.innerHTML = questions[newRandomEl].question
       questionContainer.append(pTag)
       loadAnswers(newRandomEl)
+      ifElseFunction(newRandomEl)
     } else {
       pTag.innerHTML = questions[randomEl].question
       questionContainer.append(pTag)
       loadAnswers(randomEl)
+      ifElseFunction(randomEl)
     }
 
     // appending the p tag whose value is now the random question to the question container div
@@ -81,8 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
+function ifElseFunction(number){
 answerChoicesBox.addEventListener('click', event => {
-  const questionCorrectAnswer = questions[randomEl].correctAnswer
+  const questionCorrectAnswer = questions[number].correctAnswer
   console.log("correct answer is", questionCorrectAnswer)
   // this is the id for each answer button
   const answerButtonId = event.target.id
@@ -111,12 +114,8 @@ answerChoicesBox.addEventListener('click', event => {
     }
   }
 
- // else {
- //
- //  }
-
 })
-
+}
   function switchValue(val) {
     if (val === "1"){
       let newVal = "a"
@@ -131,6 +130,27 @@ answerChoicesBox.addEventListener('click', event => {
       return newVal
     }
   }
+
+console.log("before randomizing:", questions[0])
+function testRandomizeArray(array){
+  var i = 0
+    , j = 0
+    , temp = null
+
+  for (i = array.length - 1; i > 0; i -= 1) {
+    j = Math.floor(Math.random() * (i + 1))
+    temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+  }
+}
+
+testRandomizeArray(questions)
+console.log("after randomizing", questions[0])
+
+
+
+
 
 
 
