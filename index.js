@@ -25,18 +25,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function loadQuestion() {
     buttonCounter = 0
+    console.log(randomEl);
     questionContainer.innerHTML = " "
     answerChoicesBox.innerHTML = " "
     // create a p tag and set its innerHTML to be a random question from the questions array
     let pTag = document.createElement('p')
     pTag.style = "color:#feda4a"
-    pTag.innerHTML = questions[randomEl].question
+    if (questions[randomEl] === undefined) {
+      newRandomEl = Math.floor(Math.random() * questions.length)
+      pTag.innerHTML = questions[newRandomEl].question
+      questionContainer.append(pTag)
+      loadAnswers(newRandomEl)
+    } else {
+      pTag.innerHTML = questions[randomEl].question
+      questionContainer.append(pTag)
+      loadAnswers(randomEl)
+    }
 
     // appending the p tag whose value is now the random question to the question container div
-    questionContainer.append(pTag)
+
+
 
     //makes multiple buttons for this questions options
-    loadAnswers(randomEl)
+
   }
 
 
