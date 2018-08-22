@@ -15,12 +15,19 @@ document.addEventListener("DOMContentLoaded", () => {
   let randomEl = Math.floor(Math.random() * questions.length)
 
   //invokes initial loadQuestion function
+let progressiveArray = questions
+
   loadQuestion()
+
+  function newQuestion(){
+    let newRandomEl = Math.floor(Math.random() * questions.length)
+  }
 
 
 
   function loadQuestion() {
-
+    questionContainer.innerHTML = " "
+    answerChoicesBox.innerHTML = " "
     // create a p tag and set its innerHTML to be a random question from the questions array
     let pTag = document.createElement('p')
     pTag.style = "color:#feda4a"
@@ -76,6 +83,7 @@ answerChoicesBox.addEventListener('click', event => {
     if (transferredValue === questionCorrectAnswer) {
       // console.log("this is correct", switchValue(answerButtonId));
       playerScore += 10
+
       // console.log(playerScore);
       event.target.style = "background-color: #4CAF50;"
     } else if (transferredValue !== questionCorrectAnswer){
@@ -84,15 +92,14 @@ answerChoicesBox.addEventListener('click', event => {
     // console.log(livesCounter);
     event.target.style = "background-color: #f44336;"
     }
+    if (livesCounter > 0) {
+      setTimeout(loadQuestion, 1977)
+    }
   }
 
-  if (livesCounter > 0) {
-    questionContainer.innerHTML = " "
-    answerChoicesBox.innerHTML = " "
-    loadQuestion()
-  } else {
-
-  }
+ // else {
+ //
+ //  }
 
 })
 
