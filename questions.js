@@ -6,7 +6,7 @@ const questions = [
       b: "1983",
       c: "1986",
     },
-    correctAnswer: "3"
+    correctAnswer: "c"
   },
 
   {
@@ -252,8 +252,8 @@ const questions = [
   {
     question: "Which 1981 blockbuster features characters from the Original Trilogy carved on to an ancient wall?",
     options: {
-      a: "",
-      b: "",
+      a: "Escape From New York",
+      b: "The Evil Dead",
       c: "Raiders of the Lost Ark",
     },
     correctAnswer: "c"
@@ -263,8 +263,8 @@ const questions = [
     question: "What’s the name of the green-skinned bounty hunter Han Solo kills in Mos Eisley’s cantina?",
     options: {
       a: "Greedo",
-      b: "",
-      c: "",
+      b: "Boba Fett",
+      c: "Jabba The Hutt",
     },
     correctAnswer: "a"
   },
@@ -272,9 +272,9 @@ const questions = [
   {
     question: "Who kills Jabba The Hutt?",
     options: {
-      a: "",
+      a: "Luke Skywalker",
       b: "Princess Leia",
-      c: "",
+      c: "Lando Calrissian",
     },
     correctAnswer: "b"
   },
@@ -293,8 +293,8 @@ const questions = [
     question: "Which character does Ewan McGregor’s uncle, Denis Lawson, play in the Original Trilogy?",
     options: {
       a: "Wedge Antilles",
-      b: "",
-      c: "",
+      b: "Biggs Darklighter",
+      c: "Grand Moff Tarkin",
     },
     correctAnswer: "a"
   },
@@ -312,8 +312,8 @@ const questions = [
   {
     question: "Which prop ended up nicknamed ‘The Porkburger’ by the special-effects crew?",
     options: {
-      a: "",
-      b: "",
+      a: "Luke's Mechanical Hand",
+      b: "Darth Vader's Helmet",
       c: "Millennium Falcon",
     },
     correctAnswer: "c"
@@ -323,8 +323,8 @@ const questions = [
     question: "What does the term “Blue Harvest” mean in the context of the Original Trilogy?",
     options: {
       a: "It was the fake title Return of the Jedi was filmed under",
-      b: "",
-      c: "",
+      b: "It is the name of the milk that Luke drinks in Episode IV",
+      c: "It is the term for the blue lightsaber crystal",
     },
     correctAnswer: "a"
   },
@@ -332,9 +332,9 @@ const questions = [
   {
     question: "What was Luke Skywalker’s original surname?",
     options: {
-      a: "",
+      a: "Starlord",
       b: "Starkiller",
-      c: "",
+      c: "Darklighter",
     },
     correctAnswer: "b"
   },
@@ -342,8 +342,8 @@ const questions = [
   {
     question: "Which actor made lightsaber sounds when he was duelling, which had to be removed in post-production?",
     options: {
-      a: "",
-      b: "",
+      a: "Samuel L. Jackson",
+      b: "Hayden Christensen",
       c: "Ewan McGregor",
     },
     correctAnswer: "c"
@@ -353,18 +353,18 @@ const questions = [
     question: "Who almost played the role of Jar Jar Binks?",
     options: {
       a: "Michael Jackson",
-      b: "",
-      c: "",
+      b: "Keanu Reeves",
+      c: "Eddie Murphy",
     },
     correctAnswer: "a"
   },
 
   {
-    question: "What grooming product was sprayed silver to make Qui-Gon’s communicator?",
+    question: "What retail product was sprayed silver to make Qui-Gon’s communicator?",
     options: {
-      a: "",
+      a: "Sony Voice Recorder",
       b: "Gillette Sensor Excel for Women",
-      c: "",
+      c: "A Motorolla Beeper",
     },
     correctAnswer: "b"
   },
@@ -372,8 +372,8 @@ const questions = [
   {
     question: "What does Luke’s uncle Owen do as a job?",
     options: {
-      a: "",
-      b: "",
+      a: "Death Stick Dealer",
+      b: "Trader",
       c: "Moisture farmer",
     },
     correctAnswer: "c"
@@ -383,8 +383,8 @@ const questions = [
     question: "How are Figrin D’an & The Modal Nodes better known?",
     options: {
       a: "Cantina band",
-      b: "",
-      c: "",
+      b: "The Gungan Goons",
+      c: "501st Legion of Stormtroopers",
     },
     correctAnswer: "a"
   },
@@ -392,9 +392,9 @@ const questions = [
   {
     question: "Who trained Luke in The Empire Strikes Back’s first draft?",
     options: {
-      a: "",
+      a: "Mace Windu",
       b: "Anakin Skywalker",
-      c: "",
+      c: "Jar Jar Binks, Sith Lord",
     },
     correctAnswer: "b"
   }
