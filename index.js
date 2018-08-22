@@ -14,13 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // grabs random # between 0 and length of the questions array
   let randomEl = Math.floor(Math.random() * questions.length)
 
-
+  //invokes initial loadQuestion function
   loadQuestion()
 
 
-  //loads randomEl position from questions array
+
   function loadQuestion() {
-    // let randomEl = Math.floor(Math.random() * questions.length)
 
     // create a p tag and set its innerHTML to be a random question from the questions array
     let pTag = document.createElement('p')
@@ -88,6 +87,8 @@ answerChoicesBox.addEventListener('click', event => {
   }
 
   if (livesCounter > 0) {
+    questionContainer.innerHTML = " "
+    answerChoicesBox.innerHTML = " "
     loadQuestion()
   } else {
 
