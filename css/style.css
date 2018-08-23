@@ -2,6 +2,11 @@ body {
   background: #000;
 }
 
+p {
+  color: #33adff;
+  font-size: 170%
+}
+
 .star-wars {
   display: flex;
   justify-content: center;

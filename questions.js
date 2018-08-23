@@ -36,7 +36,7 @@ const questions = [
       b: "About 14 parsecs",
       c: "Han Solo never made the Kessel Run, it is just a story he made up to kiss princesses",
     },
-    correctAnswer: "b"
+    correctAnswer: "a"
   },
 
   {
@@ -322,7 +322,7 @@ const questions = [
   {
     question: "What does the term “Blue Harvest” mean in the context of the Original Trilogy?",
     options: {
-      a: "It was the fake title Return of the Jedi was filmed under",
+      a: "It was the promotional title Return of the Jedi was filmed under",
       b: "It is the name of the milk that Luke drinks in Episode IV",
       c: "It is the term for the blue lightsaber crystal",
     },
