@@ -12,7 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let livesCounter = 2
 
   // grabs random # between 0 and length of the questions array
-  let randomEl = Math.floor(Math.random() * questions.length)
+  // let randomEl = Math.floor(Math.random() * questions.length)
+
+
+  let randomArr = RandomizeArray(questions)
 
   //invokes initial loadQuestion function
 
@@ -25,24 +28,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function loadQuestion() {
     buttonCounter = 0
-    console.log("random element to grab is :", randomEl);
+
+    //resets question container and answer choices to be blank at the start of each loadQuestion()
     questionContainer.innerHTML = " "
     answerChoicesBox.innerHTML = " "
+
     // create a p tag and set its innerHTML to be a random question from the questions array
     let pTag = document.createElement('p')
     pTag.style = "color:#feda4a"
-    if (questions[randomEl] === undefined) {
-      newRandomEl = Math.floor(Math.random() * questions.length)
-      pTag.innerHTML = questions[newRandomEl].question
-      questionContainer.append(pTag)
-      loadAnswers(newRandomEl)
-      ifElseFunction(newRandomEl)
-    } else {
-      pTag.innerHTML = questions[randomEl].question
-      questionContainer.append(pTag)
-      loadAnswers(randomEl)
-      ifElseFunction(randomEl)
-    }
+    pTag.innerHTML = randomArr[0].question
+    questionContainer.append(pTag)
+
+    loadAnswers()
 
     // appending the p tag whose value is now the random question to the question container div
 
@@ -54,9 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // grabs all of the answer options for each random question from the array
-  function loadAnswers(randomEl) {
-    let answerChoices = Object.values(questions[randomEl].options)
-    // console.log(answerChoices);
+  function loadAnswers() {
+    let answerChoices = Object.values(randomArr[0].options)
+
     // iterating over the array of answer choices and for each answer the callback function will add behavior to each element
     answerChoices.forEach( answer => displayAnswers(answer) )
 
@@ -83,39 +80,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
-function ifElseFunction(number){
 answerChoicesBox.addEventListener('click', event => {
-  const questionCorrectAnswer = questions[number].correctAnswer
-  console.log("correct answer is", questionCorrectAnswer)
+  const questionCorrectAnswer = randomArr[0].correctAnswer
   // this is the id for each answer button
   const answerButtonId = event.target.id
   // this is the value of button id switched to a string of option answer letter
   const transferredValue = switchValue(answerButtonId)
 
 
+
   if (event.target.dataset.actionButton === "answer-choice") {
-    if (transferredValue === questionCorrectAnswer) {
+
+
+
+
+
+    if (transferredValue === questionCorrectAnswer && livesCounter > 0 ) {
+
+      console.log("correct answer is", questionCorrectAnswer)
+      console.log("transferredValue: ", transferredValue)
+      console.log("event.target.id is: ", event.target.id)
+
       // console.log("this is correct", switchValue(answerButtonId));
       playerScore += 10
-
-      // console.log(playerScore);
-      event.target.style = "background-color: #4CAF50;"
-    } else if (transferredValue !== questionCorrectAnswer){
-    // console.log("wrong answer");
-    livesCounter--
-    // console.log(livesCounter);
-    event.target.style = "background-color: #f44336;"
-    }
-    if (livesCounter > 0) {
-      console.log("questions length", questions.length);
-      questions.splice(randomEl, 1)
-      console.log("new questions length", questions.length)
+      console.log("lives counter is: ", livesCounter)
+      console.log("player score is: ", playerScore);
+      console.log("questions length", randomArr.length);
+      randomArr.shift()
+      console.log("new questions length", randomArr.length)
       setTimeout(loadQuestion, 1977)
+
+
+      event.target.style = "background-color: #4CAF50;" //green
+
+    } else if (transferredValue !== questionCorrectAnswer && livesCounter > 0){
+
+      livesCounter--
+
+      event.target.style = "background-color: #f44336;" //red
+      randomArr.shift()
+      setTimeout(loadQuestion, 1977)
+  } else if (livesCounter === 0) {
+      gameOver()
     }
   }
 
+  function gameOver(){
+    alert("You got Alderaan answers. Darth Vader blew up your shit")
+    alert(`Your score is: ${playerScore}`)
+  }
+
+
 })
-}
+
   function switchValue(val) {
     if (val === "1"){
       let newVal = "a"
@@ -131,8 +148,10 @@ answerChoicesBox.addEventListener('click', event => {
     }
   }
 
-console.log("before randomizing:", questions[0])
-function testRandomizeArray(array){
+
+
+//randomizes array
+function RandomizeArray(array){
   var i = 0
     , j = 0
     , temp = null
@@ -143,10 +162,11 @@ function testRandomizeArray(array){
     array[i] = array[j]
     array[j] = temp
   }
+
+    return array
 }
 
-testRandomizeArray(questions)
-console.log("after randomizing", questions[0])
+
 
 
 
