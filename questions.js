@@ -449,6 +449,36 @@ const questions = [
     correctAnswer: "a"
   },
 
+  {
+    question: "How many languages is C-3PO fluent in?",
+    options: {
+      a: "800",
+      b: "over 6 million",
+      c: "about 3,000",
+    },
+    correctAnswer: "b"
+  },
+
+  {
+    question: "What does AT-AT stand for?",
+    options: {
+      a: "All Terrain Armored Transport",
+      b: "Armored Transport All Terrains",
+      c: "All Types All Terrains"
+    },
+    correctAnswer: "a"
+  },
+
+  {
+    question: "What odds does C-3PO give Han Solo for successfully navigating the asterioid field in 'A New Hope'?",
+    options: {
+      a: "1,000,000 to 1",
+      b: "5,320 to 5",
+      c: "3,720 to 1",
+    },
+    correctAnswer: "c"
+  }
+
 
 
 

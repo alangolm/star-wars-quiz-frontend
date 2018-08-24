@@ -21,3 +21,46 @@ p {
   perspective: 400px;
   text-align: justify;
 }
+
+.sidenav {
+    height: 100%;
+    width: 151px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+/* .questions {
+  padding-left: 30px;
+} */
+
+.right2 {
+position: absolute;
+right: 95px;
+top: 10px;
+display: none;
+}
+
+.right1 {
+position: absolute;
+right: 10px;
+top: 10px;
+display: none;
+}
+
+/* .button {
+  background-color: #000;
+  border: 2px solid #feda4a;
+  /* color: white; */
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+} */

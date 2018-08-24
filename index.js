@@ -8,12 +8,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputNameForm = document.getElementById('input-initials-form')
   const nameInputValue = document.getElementById('name-input-value')
   const homePage = document.getElementById('home-page')
+  const scoreNav = document.getElementById('score-nav')
+  const startOver = document.getElementById('start-over-button-container')
+  const lifeOne = document.getElementById('xwing1')
+  const lifeTwo = document.getElementById('xwing2')
   let playerName
   //used for buttonId
   let buttonCounter = 0
   let playerScore = 0
   let livesCounter = 2
-  let randomArr = RandomizeArray(questions)
+  let randomArr = randomizeArray(questions)
 
   inputNameForm.addEventListener('submit', event => {
     event.preventDefault()
@@ -22,6 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
     homePage.style.display = "none"
     // console.log(playerName);
     loadQuestion()
+    lifeOne.style.display = "inline"
+    lifeTwo.style.display = "inline"
   })
 
   function loadQuestion() {
@@ -50,6 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const answerButton = document.createElement('button')
     // setting the innerHTML of each button to be the "answer" that is passed in to the function
     answerButton.id = ++buttonCounter
+    answerButton.className = "button"
+    // answerButton.innerText.style = "color:#feda4a"
     answerButton.dataset.actionButton = "answer-choice"
     answerButton.innerHTML = `${answer}`
     // console.log(answerButton);
@@ -88,21 +96,27 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (transferredValue !== questionCorrectAnswer && livesCounter > 0){
 
           livesCounter--
-
+          lifeTwo.style.display = "none"
           event.target.style = "background-color: #f44336;" //red
           randomArr.shift()
           setTimeout(loadQuestion, 1977)
-        } else if (livesCounter === 0) {
-            gameOver()
-          }
+        }
     }
 
-  function gameOver(){
-    alert("You got Alderaan answers. Darth Vader blew up your ship!")
-    alert(`Your score is: ${playerScore}`)
+    if (livesCounter === 0) {
+      lifeOne.style.display = "none"
+      gameOver()
+      setTimeout(loadQuestion, 10000)
+
+      }
+
+  function gameOver() {
+    questionContainer.innerHTML = ''
+    answerChoicesBox.innerHTML = ''
+    let finalScore = document.createElement('p')
+    finalScore.innerHTML = `Your Score: ${playerScore}`
+    startOver.append(finalScore)
   }
-
-
 })
 
   function switchValue(val) {
@@ -136,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //randomizes array
-  function RandomizeArray(array) {
+  function randomizeArray(array) {
     var i = 0
       , j = 0
       , temp = null
@@ -147,7 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
       array[i] = array[j]
       array[j] = temp
     }
-
       return array
   }
 
@@ -158,20 +171,28 @@ document.addEventListener("DOMContentLoaded", () => {
         'Content-type':'application/json'
       },
       body: JSON.stringify(
-        { name: playerName }
-      )
+        { name: playerName }),
     }
-
-    fetch(playersUrl, playerConfig)
-      .then(res => res.json())
-      .then(data => console.log(data))
+    return fetch(playersUrl, playerConfig).then(res => res.json()).then(data => console.log(data))
   }
 
   function getScores() {
-    fetch(scoresUrl).then(res=>res.json()).then(data=>console.log(data))
+    fetch(scoresUrl).then(res=>res.json()).then(data=>displayScores(data))
   }
 
   getScores()
+
+  function displayScores(data) {
+    scoreNav.innerHTML = data.map(score => {return `<table>
+                                                      <tr>
+                                                        <td>${score.player_id}</td>
+                                                        <td>${score.points}</td>
+                                                      </tr>
+                                                    </table>`
+    }).join('')
+  }
+
+
 
   // function addScore() {
   //   const postConfig = {
