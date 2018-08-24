@@ -12,12 +12,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const startOver = document.getElementById('start-over-button-container')
   const lifeOne = document.getElementById('xwing1')
   const lifeTwo = document.getElementById('xwing2')
+  let lastPlayer
+  // console.log(lastPlayer);
   let playerName
   //used for buttonId
   let buttonCounter = 0
   let playerScore = 0
   let livesCounter = 2
   let randomArr = randomizeArray(questions)
+
 
   inputNameForm.addEventListener('submit', event => {
     event.preventDefault()
@@ -106,8 +109,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (livesCounter === 0) {
       lifeOne.style.display = "none"
       gameOver()
-      setTimeout(loadQuestion, 10000)
-
       }
 
   function gameOver() {
@@ -116,6 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let finalScore = document.createElement('p')
     finalScore.innerHTML = `Your Score: ${playerScore}`
     startOver.append(finalScore)
+    addScore()
   }
 })
 
@@ -164,6 +166,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return array
   }
 
+  // function getPlayer() {
+  //   fetch()
+  // }
+
   function addPlayer() {
     const playerConfig = {
       method: 'POST',
@@ -173,7 +179,9 @@ document.addEventListener("DOMContentLoaded", () => {
       body: JSON.stringify(
         { name: playerName }),
     }
-    return fetch(playersUrl, playerConfig).then(res => res.json()).then(data => console.log(data))
+    fetch(playersUrl, playerConfig)
+      .then(res => res.json())
+      .then(data => lastPlayer = data.id)
   }
 
   function getScores() {
@@ -192,17 +200,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }).join('')
   }
 
-
-
-  // function addScore() {
-  //   const postConfig = {
-  //     method: 'POST',
-  //     body: JSON.stringify(
-  //       {points: playerScore,
-  //       player_id: }),
-  //   }
-  //   return fetch(scoresUrl, postConfig).then(res=>res.json()).then(data=>console.log(data))
-  // }
+  function addScore() {
+    console.log("this is", lastPlayer);
+    const postConfig = {
+      method: 'POST',
+      headers: {
+        'Content-type':'application/json'
+      },
+      body: JSON.stringify(
+        {points: playerScore,
+        player_id: lastPlayer}),
+    }
+    fetch(scoresUrl, postConfig)
+      .then(res=>res.json())
+      .then(data=>{
+        console.log(data)
+    })
+  }
 
 
 
