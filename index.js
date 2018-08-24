@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch(scoresUrl).then(res=>res.json()).then(data=>displayScores(data))
   }
 
-  getScores()
+   getScores()
 
   function displayScores(data) {
     scoreNav.innerHTML = data.map(score => {return `<table>
